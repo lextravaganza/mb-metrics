@@ -1591,15 +1591,15 @@ const METRICS_DATA = {
         ]
       },
 
-      // LinkedIn newsletter figures are "past 28 days" (rolling, ~5/4–6/1), not a clean calendar month.
-      // editionTitle / emailSends / emailOpenRate not in this export — fill from the email send report.
+      // May Trust Matters edition (per-article analytics).
+      // editionTitle still needed.
       newsletter: {
         editionTitle: "",
-        articleViews: 376,   // +6.9% (past 28 days)
-        impressions:  835,   // -23.4% (past 28 days)
-        engagements:  14,    // -51.8% (past 28 days)
-        emailSends:   null,
-        emailOpenRate: null
+        articleViews: 342,
+        impressions:  760,
+        engagements:  11,    // 10 reactions + 1 comment + 0 reposts
+        emailSends:   574,
+        emailOpenRate: 39
       },
 
       website: {
@@ -1636,17 +1636,23 @@ const METRICS_DATA = {
         ]
       },
 
-      // Only newsletter-subscriber job titles were exported this month (no full
-      // industry/seniority/company-size demographics), so the audience section is
-      // hidden for May. See note to fill if you want it shown.
-      audience: null,
+      // May edition article-viewer demographics (only the groups LinkedIn surfaced for this edition).
+      audience: {
+        seniority: [
+          { name: "Senior",   percentage: 27.3 },
+          { name: "Director", percentage: 27.3 }
+        ],
+        companySize: [
+          { name: "1\u201310 employees", percentage: 31.8 }
+        ]
+      },
 
       highlights: [
         "Website visits down 13% MoM (272 vs. April). Unique visitors -14%, pageviews -17%; bounce rate flat at 88.57%.",
         "LinkedIn impressions rose to 2,817 (from 2,545 in April), but engagements fell to 49 and engagement rate to 1.74% (from 2.48%).",
         "28 new followers in May; total following 4,270.",
         "Top post: 'What Leaders Communicate Without Saying a Word' (5/7) — 927 impressions, 21 engagements, the month's clear standout.",
-        "Newsletter (past 28 days): 376 article views (+6.9%) and 4 new subscribers, though impressions (835) and engagements (14) were down."
+        "May Trust Matters edition: 342 article views and a 39% open rate on 574 email sends \u2014 views and open rate held about flat with April, while impressions (760) and reactions came in lower than April's edition."
       ]
     }
   ]
@@ -2199,11 +2205,20 @@ function renderAudience(months) {
     `;
   };
 
+  const groups = [
+    ["Industry",     "by sector",    aud.industry],
+    ["Seniority",    "by level",     aud.seniority],
+    ["Company Size", "by headcount", aud.companySize],
+    ["Job Title",    "most common",  aud.jobTitle],
+  ].filter(([, , items]) => Array.isArray(items) && items.length);
+
+  if (!groups.length) {
+    if (section) section.style.display = "none";
+    return;
+  }
+
   document.getElementById("audience-grid").innerHTML =
-    renderGroup("Industry",       "by sector",     aud.industry) +
-    renderGroup("Seniority",      "by level",      aud.seniority) +
-    renderGroup("Company Size",   "by headcount",  aud.companySize) +
-    renderGroup("Job Title",      "most common",   aud.jobTitle);
+    groups.map(([title, eyebrow, items]) => renderGroup(title, eyebrow, items)).join("");
 }
 
 // ---------- NEWSLETTER ----------
