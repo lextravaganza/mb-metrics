@@ -249,6 +249,15 @@ section:last-of-type { border-bottom: none; }
   margin-top: 2px;
 }
 
+.kpi-not-tracked {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 12px;
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+}
+
 .delta {
   display: inline-flex;
   align-items: center;
@@ -1676,17 +1685,51 @@ const METRICS_DATA = {
       shortLabel: "Jun",
 
       linkedin: {
-        impressions:   null,     // LinkedIn Creator daily export not yet in hand for June — leave null so KPI shows "—"
-        engagements:   37,       // From LinkedIn Content Analytics: 35 reactions + 1 comment + 0 reposts + 1 save
-        followers:     4282,     // Total followers at end of June (Audience Analytics)
-        membersReached: null,    // Not surfaced in June screenshots
-        newFollowers:  12,       // Net change from 4,270 (end of May) to 4,282
-        engagementRate: null,    // Can't compute without impressions total
+        impressions:   1589,     // From Creator export (Discovery sheet, 6/1–6/30)
+        engagements:   38,       // Sum of daily engagements from Creator export
+        followers:     4282,     // Total followers as of 6/30 (Creator export)
+        membersReached: 839,     // Discovery sheet
+        newFollowers:  18,       // Gross new (net +12 after 6 unfollows)
+        engagementRate: 2.39,    // 38 / 1,589
 
+        daily: [
+          { date: "6/1",  impressions: 154, engagements: 0,  newFollowers: 2 },
+          { date: "6/2",  impressions: 124, engagements: 1,  newFollowers: 2 },
+          { date: "6/3",  impressions: 72,  engagements: 1,  newFollowers: 0 },
+          { date: "6/4",  impressions: 35,  engagements: 0,  newFollowers: 0 },
+          { date: "6/5",  impressions: 0,   engagements: 0,  newFollowers: 1 },
+          { date: "6/6",  impressions: 23,  engagements: 0,  newFollowers: 0 },
+          { date: "6/7",  impressions: 13,  engagements: 0,  newFollowers: 1 },
+          { date: "6/8",  impressions: 3,   engagements: 0,  newFollowers: 0 },
+          { date: "6/9",  impressions: 5,   engagements: 0,  newFollowers: 0 },
+          { date: "6/10", impressions: 5,   engagements: 2,  newFollowers: 0 },
+          { date: "6/11", impressions: 101, engagements: 3,  newFollowers: 0 },
+          { date: "6/12", impressions: 45,  engagements: 3,  newFollowers: 0 },
+          { date: "6/13", impressions: 109, engagements: 4,  newFollowers: 0 },
+          { date: "6/14", impressions: 31,  engagements: 0,  newFollowers: 0 },
+          { date: "6/15", impressions: 31,  engagements: 1,  newFollowers: 1 },
+          { date: "6/16", impressions: 20,  engagements: 2,  newFollowers: 0 },
+          { date: "6/17", impressions: 6,   engagements: 0,  newFollowers: 1 },
+          { date: "6/18", impressions: 331, engagements: 10, newFollowers: 1 },
+          { date: "6/19", impressions: 100, engagements: 2,  newFollowers: 1 },
+          { date: "6/20", impressions: 32,  engagements: 0,  newFollowers: 0 },
+          { date: "6/21", impressions: 11,  engagements: 0,  newFollowers: 1 },
+          { date: "6/22", impressions: 18,  engagements: 2,  newFollowers: 1 },
+          { date: "6/23", impressions: 27,  engagements: 1,  newFollowers: 1 },
+          { date: "6/24", impressions: 4,   engagements: 0,  newFollowers: 3 },
+          { date: "6/25", impressions: 120, engagements: 3,  newFollowers: 1 },
+          { date: "6/26", impressions: 70,  engagements: 1,  newFollowers: 0 },
+          { date: "6/27", impressions: 31,  engagements: 1,  newFollowers: 1 },
+          { date: "6/28", impressions: 26,  engagements: 1,  newFollowers: 0 },
+          { date: "6/29", impressions: 24,  engagements: 0,  newFollowers: 0 },
+          { date: "6/30", impressions: 18,  engagements: 0,  newFollowers: 0 }
+        ],
+
+        // Top 3 by engagements from the June-only Creator export.
         topPosts: [
-          { title: "What Got You Here Won't Get You There",              date: "6/16", engagements: 14, impressions: 506 }, // Trust Matters — June edition
-          { title: "Psychological Safety Isn't Created in a Workshop",   date: "6/11", engagements: 3,  impressions: 389 },
-          { title: "What Avoiding Hard Conversations Really Costs Leaders", date: "6/25", engagements: 5,  impressions: 229 }
+          { title: "What Got You Here Won't Get You There",   date: "6/18", engagements: 14, impressions: 506 }, // Trust Matters June edition
+          { title: "How Self-Aware Are You? Research Shows…", date: "6/11", engagements: 6,  impressions: 183 },
+          { title: "Check Out the Telluride Leadership Summit", date: "6/13", engagements: 6,  impressions: 172 }
         ]
       },
 
@@ -1734,32 +1777,45 @@ const METRICS_DATA = {
         ]
       },
 
-      // Overall LinkedIn audience demographics (from Audience Analytics — Top demographics panel).
-      // These are top-1 in each category; LinkedIn only surfaces leaders in this view.
+      // LinkedIn audience demographics (from Creator export DEMOGRAPHICS sheet).
       audience: {
+        industry: [
+          { name: "Business Consulting and Services", percentage: 17 },
+          { name: "Human Resources Services",         percentage: 8  },
+          { name: "Professional Training and Coaching", percentage: 5  },
+          { name: "Higher Education",                 percentage: 4  },
+          { name: "IT Services and IT Consulting",    percentage: 4  }
+        ],
         seniority: [
-          { name: "Senior", percentage: 32 }
+          { name: "Senior",   percentage: 32 },
+          { name: "Director", percentage: 15 },
+          { name: "CXO",      percentage: 12 },
+          { name: "VP",       percentage: 10 },
+          { name: "Entry",    percentage: 8  }
         ],
         companySize: [
-          { name: "10,001+ employees", percentage: 17 }
-        ],
-        industry: [
-          { name: "Business Consulting and Services", percentage: 17 }
+          { name: "10,001+ employees",  percentage: 17 },
+          { name: "2\u201310 employees", percentage: 14 },
+          { name: "11\u201350 employees", percentage: 12 },
+          { name: "1,001\u20135,000 employees", percentage: 11 },
+          { name: "51\u2013200 employees", percentage: 10 }
         ],
         jobTitle: [
-          { name: "Founder", percentage: 6 }
+          { name: "Founder",                 percentage: 6 },
+          { name: "Chief Executive Officer", percentage: 3 },
+          { name: "President",               percentage: 2 },
+          { name: "Co-Founder",              percentage: 2 },
+          { name: "Managing Director",       percentage: 2 }
         ]
-        // Also observed but not shown by the dashboard schema:
-        // Location: New York City Metropolitan Area (7%)
-        // Company:  McKinsey & Company (2%)
       },
 
       highlights: [
         "Website visits up 41% MoM (384 vs. 272 in May), unique visitors up 43% (378 vs. 265), pageviews up 12% (320 vs. 286). Bounce rate rose to 91.63% (from 88.57%).",
+        "LinkedIn impressions 1,589 (down 44% from 2,817 in May), engagements 38 (down 22%), engagement rate 2.39% (up from 1.74%). Members reached: 839.",
         "Home was the top page with 120 views. Leadership Pattern Reflection Workbook broke into the top 5 (14 views).",
         "The Manager Multiplier Effect held attention longest at 11:36 avg time on page. Mentorship vs Sponsorship came in at 10:16; About at 7:16; What Avoided Conversations Are Really Costing You at 6:13.",
         "June Trust Matters edition ('What Got You Here Won't Get You There') had 544 impressions, 364 article views, and 16 engagements. LinkedIn newsletter subscribers now at 849.",
-        "LinkedIn followers grew to 4,282 (+12 net in June)."
+        "18 new followers in June (net +12 after unfollows); total 4,282."
       ]
     }
   ]
@@ -1973,37 +2029,53 @@ function renderKPIStrip(months) {
   const items = [
     {
       label: "Website Visits",
+      raw: latest.website.visits,
       value: fmtNum(latest.website.visits),
       delta: deltaHTML(latest.website.visits, previous?.website.visits, { providedPct: pd.visits }),
       sub: previous ? `vs. ${previous.shortLabel}` : "vs. prior month"
     },
     {
       label: "LinkedIn Impressions",
+      raw: latest.linkedin.impressions,
       value: fmtNum(latest.linkedin.impressions),
       delta: deltaHTML(latest.linkedin.impressions, previous?.linkedin.impressions),
       sub: latest.shortLabel + " total"
     },
     {
       label: "Members Reached",
+      raw: latest.linkedin.membersReached,
       value: fmtNum(latest.linkedin.membersReached),
       delta: deltaHTML(latest.linkedin.membersReached, previous?.linkedin.membersReached),
       sub: "unique on LinkedIn"
     },
     {
       label: "LinkedIn Followers",
+      raw: latest.linkedin.followers,
       value: fmtNum(latest.linkedin.followers),
       delta: deltaHTML(latest.linkedin.followers, previous?.linkedin.followers),
-      sub: `+${latest.linkedin.newFollowers} new this month`
+      sub: latest.linkedin.newFollowers != null
+        ? `+${latest.linkedin.newFollowers} new this month`
+        : "end of month"
     }
   ];
 
-  document.getElementById("kpi-strip").innerHTML = items.map(k => `
-    <div class="kpi">
-      <div class="kpi-label">${k.label}</div>
-      <div class="kpi-value">${k.value}</div>
-      <div class="kpi-meta">${k.delta}<span>${k.sub}</span></div>
-    </div>
-  `).join("");
+  document.getElementById("kpi-strip").innerHTML = items.map(k => {
+    if (k.raw == null) {
+      return `
+        <div class="kpi kpi-missing">
+          <div class="kpi-label">${k.label}</div>
+          <div class="kpi-not-tracked">Not reported this month</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="kpi">
+        <div class="kpi-label">${k.label}</div>
+        <div class="kpi-value">${k.value}</div>
+        <div class="kpi-meta">${k.delta}<span>${k.sub}</span></div>
+      </div>
+    `;
+  }).join("");
 }
 
 // ---------- LINKEDIN ----------
@@ -2024,15 +2096,22 @@ function renderLinkedIn(months, isSingleMonth) {
   // Engagement rate stat (always shows)
   const erEl = document.getElementById("linkedin-er");
   if (erEl) {
-    const er = latest.linkedin.engagementRate ??
-      ((latest.linkedin.engagements / latest.linkedin.impressions) * 100);
-    erEl.textContent = er.toFixed(2) + "%";
+    let er = latest.linkedin.engagementRate;
+    if (er == null && latest.linkedin.impressions && latest.linkedin.engagements != null) {
+      er = (latest.linkedin.engagements / latest.linkedin.impressions) * 100;
+    }
+    erEl.textContent = (er != null && isFinite(er)) ? er.toFixed(2) + "%" : "—";
   }
   const erMetaEl = document.getElementById("linkedin-er-meta");
   if (erMetaEl) {
-    erMetaEl.textContent =
-      `${fmtNum(latest.linkedin.engagements)} engagements on ` +
-      `${fmtNum(latest.linkedin.impressions)} impressions`;
+    if (latest.linkedin.impressions != null) {
+      erMetaEl.textContent =
+        `${fmtNum(latest.linkedin.engagements)} engagements on ` +
+        `${fmtNum(latest.linkedin.impressions)} impressions`;
+    } else {
+      erMetaEl.textContent =
+        `${fmtNum(latest.linkedin.engagements)} engagements · impressions not tracked`;
+    }
   }
 }
 
