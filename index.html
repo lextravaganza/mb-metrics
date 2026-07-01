@@ -589,9 +589,23 @@ section:last-of-type { border-bottom: none; }
 /* ---------- Time on page ---------- */
 .time-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   gap: 32px;
   align-items: start;
+}
+
+.time-grid > * {
+  min-width: 0;
+}
+
+/* Match chart panel height to approximate table height */
+#time-chart-panel > .chart-panel {
+  height: 364px;
+}
+
+#time-chart-panel .chart-canvas-wrap.tall {
+  height: auto;
+  flex: 1 1 0;
 }
 
 .time-grid-single {
@@ -673,7 +687,7 @@ section:last-of-type { border-bottom: none; }
 /* ---------- Highlights ---------- */
 .highlights-grid {
   display: grid;
-  grid-template-columns: repeat(var(--month-count, 3), 1fr);
+  grid-template-columns: repeat(var(--highlights-count, var(--month-count, 3)), 1fr);
   gap: 24px;
 }
 
@@ -1324,9 +1338,9 @@ footer .container {
 const METRICS_DATA = {
   meta: {
     title: "Metrics Report",
-    period: "March–May 2026",
+    period: "March–June 2026",
     subtitle: "LinkedIn, website, and audience performance",
-    lastUpdated: "June 2026"
+    lastUpdated: "July 2026"
   },
 
   months: [
@@ -1652,6 +1666,100 @@ const METRICS_DATA = {
         "28 new followers in May; total following 4,270.",
         "Top post: 'What Leaders Communicate Without Saying a Word' (5/7) — 927 impressions, 21 engagements, the month's clear standout.",
         "May Trust Matters edition: 343 article views and a 39% open rate on 574 email sends \u2014 views and open rate held about flat with April, while impressions (760) and reactions came in lower than April's edition."
+      ]
+    },
+
+    /* ---------- JUNE 2026 ---------- */
+    {
+      key: "2026-06",
+      label: "June 2026",
+      shortLabel: "Jun",
+
+      linkedin: {
+        impressions:   null,     // LinkedIn Creator daily export not yet in hand for June — leave null so KPI shows "—"
+        engagements:   37,       // From LinkedIn Content Analytics: 35 reactions + 1 comment + 0 reposts + 1 save
+        followers:     4282,     // Total followers at end of June (Audience Analytics)
+        membersReached: null,    // Not surfaced in June screenshots
+        newFollowers:  12,       // Net change from 4,270 (end of May) to 4,282
+        engagementRate: null,    // Can't compute without impressions total
+
+        topPosts: [
+          { title: "What Got You Here Won't Get You There",              date: "6/16", engagements: 14, impressions: 506 }, // Trust Matters — June edition
+          { title: "Psychological Safety Isn't Created in a Workshop",   date: "6/11", engagements: 3,  impressions: 389 },
+          { title: "What Avoiding Hard Conversations Really Costs Leaders", date: "6/25", engagements: 5,  impressions: 229 }
+        ]
+      },
+
+      // June Trust Matters edition (LinkedIn Newsletter Analytics, past 28 days).
+      newsletter: {
+        editionTitle:  "What Got You Here Won't Get You There",
+        articleViews:  364,
+        impressions:   544,
+        engagements:   16,
+        emailSends:    null,     // Squarespace campaign figures not yet provided for June
+        emailOpenRate: null
+      },
+
+      website: {
+        visits:         384,
+        uniqueVisitors: 378,
+        pageViews:      320,
+        bounceRate:     91.63,
+        avgTimeSeconds: 111,     // Site-wide average (Squarespace "Your Page Averages")
+
+        trafficSources: {
+          direct:   344,   // 89.6%
+          search:   25,    // 6.51%
+          social:   12,    // 3.13% (LinkedIn referrals)
+          email:    0,
+          referral: 3      // 0.78%
+        },
+
+        // Top 5 by views (Squarespace order for the 3-way tie at 11 views: About, Leading From the Inside Out, What Avoided Conversations).
+        topPages: [
+          { name: "Home",                                     views: 120 },
+          { name: "Blog & Videos",                            views: 25  },
+          { name: "A Leadership Pattern Reflection Workbook", views: 14  },
+          { name: "About",                                    views: 11  },
+          { name: "Leading From the Inside Out",              views: 11  }
+        ],
+
+        // Top 5 by time on page.
+        timeOnPage: [
+          { page: "The Manager Multiplier Effect",              seconds: 696 }, // 11:36 (7 views)
+          { page: "Mentorship vs Sponsorship",                  seconds: 616 }, // 10:16 (2 views)
+          { page: "About",                                      seconds: 436 }, // 7:16 (11 views)
+          { page: "What Avoided Conversations Are Really Costing You", seconds: 373 }, // 6:13 (11 views)
+          { page: "Creating Trust in the Workplace",            seconds: 138 }  // 2:18 (3 views)
+        ]
+      },
+
+      // Overall LinkedIn audience demographics (from Audience Analytics — Top demographics panel).
+      // These are top-1 in each category; LinkedIn only surfaces leaders in this view.
+      audience: {
+        seniority: [
+          { name: "Senior", percentage: 32 }
+        ],
+        companySize: [
+          { name: "10,001+ employees", percentage: 17 }
+        ],
+        industry: [
+          { name: "Business Consulting and Services", percentage: 17 }
+        ],
+        jobTitle: [
+          { name: "Founder", percentage: 6 }
+        ]
+        // Also observed but not shown by the dashboard schema:
+        // Location: New York City Metropolitan Area (7%)
+        // Company:  McKinsey & Company (2%)
+      },
+
+      highlights: [
+        "Website visits up 41% MoM (384 vs. 272 in May), unique visitors up 43% (378 vs. 265), pageviews up 12% (320 vs. 286). Bounce rate rose to 91.63% (from 88.57%).",
+        "Home was the top page with 120 views. Leadership Pattern Reflection Workbook broke into the top 5 (14 views).",
+        "The Manager Multiplier Effect held attention longest at 11:36 avg time on page. Mentorship vs Sponsorship came in at 10:16; About at 7:16; What Avoided Conversations Are Really Costing You at 6:13.",
+        "June Trust Matters edition ('What Got You Here Won't Get You There') had 544 impressions, 364 article views, and 16 engagements. LinkedIn newsletter subscribers now at 849.",
+        "LinkedIn followers grew to 4,282 (+12 net in June)."
       ]
     }
   ]
@@ -2355,6 +2463,8 @@ function renderHighlights(months) {
     if (section) section.style.display = "none";
     return;
   }
+
+  document.documentElement.style.setProperty("--highlights-count", withHighlights.length);
 
   document.getElementById("highlights-grid").innerHTML = withHighlights.map(m => {
     const [monthName, year] = m.label.split(" ");
