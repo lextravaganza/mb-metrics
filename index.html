@@ -284,6 +284,10 @@ section:last-of-type { border-bottom: none; }
   gap: 24px;
 }
 
+.chart-row > * {
+  min-width: 0;
+}
+
 .chart-panel {
   background: var(--paper);
   border: 1px solid var(--cream-edge);
@@ -340,7 +344,7 @@ section:last-of-type { border-bottom: none; }
 /* ---------- Top posts ---------- */
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(var(--month-count, 3), 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
@@ -428,7 +432,7 @@ section:last-of-type { border-bottom: none; }
 /* ---------- Top pages by month ---------- */
 .pages-grid {
   display: grid;
-  grid-template-columns: repeat(var(--month-count, 3), 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
 }
 
@@ -502,7 +506,7 @@ section:last-of-type { border-bottom: none; }
 /* ---------- Newsletter ---------- */
 .newsletter-grid {
   display: grid;
-  grid-template-columns: repeat(var(--newsletter-count, 2), 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
 }
 
@@ -552,8 +556,8 @@ section:last-of-type { border-bottom: none; }
 
 .newsletter-stats {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 16px;
 }
 
 .newsletter-stat {
@@ -884,6 +888,10 @@ footer .container {
   align-items: stretch;
 }
 
+.traffic-grid > * {
+  min-width: 0;
+}
+
 .donut-wrap {
   display: flex;
   align-items: center;
@@ -1189,7 +1197,7 @@ footer .container {
   </section>
 
   <!-- ========== TRAFFIC SOURCES ========== -->
-  <section class="reveal">
+  <section id="traffic-sources-section" class="reveal">
     <div class="container">
       <div class="section-head">
         <div>
@@ -1347,9 +1355,9 @@ footer .container {
 const METRICS_DATA = {
   meta: {
     title: "Metrics Report",
-    period: "March–June 2026",
+    period: "March–August 2026",
     subtitle: "LinkedIn, website, and audience performance",
-    lastUpdated: "July 2026"
+    lastUpdated: "September 2026"
   },
 
   months: [
@@ -1669,13 +1677,7 @@ const METRICS_DATA = {
         ]
       },
 
-      highlights: [
-        "Website visits down 13% MoM (272 vs. April). Unique visitors -14%, pageviews -17%; bounce rate flat at 88.57%.",
-        "LinkedIn impressions rose to 2,817 (from 2,545 in April), but engagements fell to 49 and engagement rate to 1.74% (from 2.48%).",
-        "28 new followers in May; total following 4,270.",
-        "Top post: 'What Leaders Communicate Without Saying a Word' (5/7) — 927 impressions, 21 engagements, the month's clear standout.",
-        "May Trust Matters edition: 343 article views and a 39% open rate on 574 email sends \u2014 views and open rate held about flat with April, while impressions (760) and reactions came in lower than April's edition."
-      ]
+      highlights: []
     },
 
     /* ---------- JUNE 2026 ---------- */
@@ -1809,13 +1811,246 @@ const METRICS_DATA = {
         ]
       },
 
+      highlights: []
+    },
+
+    /* ---------- JULY 2026 ---------- */
+    {
+      key: "2026-07",
+      label: "July 2026",
+      shortLabel: "Jul",
+
+      linkedin: {
+        impressions:    1685,    // Sum of daily from Creator export
+        engagements:    58,      // Sum of daily
+        followers:      4292,    // End of July (estimated: 4282 + 19 gross - ~9 unfollows)
+        membersReached: 883,     // From July Content Analytics screenshot (per-month now available)
+        newFollowers:   19,      // Gross new
+        engagementRate: 3.44,    // 58 / 1,685 \u00d7 100
+
+        daily: [
+          { date: "7/1",  impressions: 69,  engagements: 0, newFollowers: 0 },
+          { date: "7/2",  impressions: 9,   engagements: 0, newFollowers: 0 },
+          { date: "7/3",  impressions: 1,   engagements: 0, newFollowers: 0 },
+          { date: "7/4",  impressions: 11,  engagements: 0, newFollowers: 1 },
+          { date: "7/5",  impressions: 10,  engagements: 1, newFollowers: 0 },
+          { date: "7/6",  impressions: 0,   engagements: 0, newFollowers: 0 },
+          { date: "7/7",  impressions: 1,   engagements: 0, newFollowers: 1 },
+          { date: "7/8",  impressions: 2,   engagements: 0, newFollowers: 2 },
+          { date: "7/9",  impressions: 105, engagements: 4, newFollowers: 2 },
+          { date: "7/10", impressions: 87,  engagements: 1, newFollowers: 1 },
+          { date: "7/11", impressions: 60,  engagements: 5, newFollowers: 0 },
+          { date: "7/12", impressions: 39,  engagements: 0, newFollowers: 0 },
+          { date: "7/13", impressions: 79,  engagements: 1, newFollowers: 0 },
+          { date: "7/14", impressions: 55,  engagements: 2, newFollowers: 3 },
+          { date: "7/15", impressions: 31,  engagements: 0, newFollowers: 2 },
+          { date: "7/16", impressions: 217, engagements: 5, newFollowers: 0 },
+          { date: "7/17", impressions: 44,  engagements: 4, newFollowers: 1 },
+          { date: "7/18", impressions: 47,  engagements: 2, newFollowers: 0 },
+          { date: "7/19", impressions: 47,  engagements: 0, newFollowers: 0 },
+          { date: "7/20", impressions: 75,  engagements: 1, newFollowers: 0 },
+          { date: "7/21", impressions: 72,  engagements: 5, newFollowers: 0 },
+          { date: "7/22", impressions: 53,  engagements: 0, newFollowers: 1 },
+          { date: "7/23", impressions: 136, engagements: 3, newFollowers: 0 },
+          { date: "7/24", impressions: 98,  engagements: 8, newFollowers: 2 },
+          { date: "7/25", impressions: 24,  engagements: 3, newFollowers: 0 },
+          { date: "7/26", impressions: 20,  engagements: 1, newFollowers: 0 },
+          { date: "7/27", impressions: 17,  engagements: 0, newFollowers: 2 },
+          { date: "7/28", impressions: 12,  engagements: 0, newFollowers: 0 },
+          { date: "7/29", impressions: 17,  engagements: 2, newFollowers: 0 },
+          { date: "7/30", impressions: 174, engagements: 6, newFollowers: 0 },
+          { date: "7/31", impressions: 73,  engagements: 4, newFollowers: 1 }
+        ],
+
+        // Top 3 by engagement from the July-only Creator export.
+        topPosts: [
+          { title: "When Formal DEIB Programs Are Scaled Back",      date: "7/30", engagements: 21, impressions: 952 },
+          { title: "The Way You Were Taught to Decide Was Largely\u2026", date: "7/16", engagements: 16, impressions: 579 }, // Trust Matters July edition
+          { title: "Six Traps That Sabotage Your Team's Decision",   date: "7/23", engagements: 14, impressions: 383 }
+        ]
+      },
+
+      // July Trust Matters edition. Full newsletter analytics not exported for this month;
+      // impressions and engagements taken from the aggregate top-posts sheet.
+      newsletter: {
+        editionTitle:  "The Way You Were Taught to Decide",
+        articleViews:  null,    // Newsletter-specific export not provided for July
+        impressions:   579,
+        engagements:   16,
+        emailSends:    null,
+        emailOpenRate: null
+      },
+
+      website: {
+        visits:         419,     // Estimated (2-month combined 788 \u00d7 pageview share 53%)
+        uniqueVisitors: 403,     // Estimated (759 \u00d7 53%)
+        pageViews:      363,     // From Squarespace, July view
+        bounceRate:     91.83,   // Site-wide average, July
+        avgTimeSeconds: 28,      // Site-wide average, July
+
+        trafficSources: null,    // Per-month source breakdown not provided this cycle
+
+        topPages: [
+          { name: "Home",                        views: 150 },
+          { name: "Blog & Videos",               views: 22  },
+          { name: "About",                       views: 17  },
+          { name: "Coaching",                    views: 14  },
+          { name: "Deciding Before You're Sure", views: 12  }
+        ],
+
+        // Top pages by time on page (limited to what appeared in July's top-15 view).
+        timeOnPage: [
+          { page: "Deciding Before You're Sure", seconds: 367 }, // 6:07 (12 views)
+          { page: "About",                       seconds: 25  }, // 0:25 (17 views)
+          { page: "Coaching",                    seconds: 19  }, // 0:19 (14 views)
+          { page: "Home",                        seconds: 18  }, // 0:18 (150 views)
+          { page: "Blog & Videos",               seconds: 4   }  // 0:04 (22 views)
+        ]
+      },
+
+      audience: null,  // Only latest month's audience is displayed; using aggregate for August
+
       highlights: [
-        "Website visits up 41% MoM (384 vs. 272 in May), unique visitors up 43% (378 vs. 265), pageviews up 12% (320 vs. 286). Bounce rate rose to 91.63% (from 88.57%).",
-        "LinkedIn impressions 1,589 (down 44% from 2,817 in May), engagements 38 (down 22%), engagement rate 2.39% (up from 1.74%). Members reached: 839.",
-        "Home was the top page with 120 views. Leadership Pattern Reflection Workbook broke into the top 5 (14 views).",
-        "The Manager Multiplier Effect held attention longest at 11:36 avg time on page. Mentorship vs Sponsorship came in at 10:16; About at 7:16; What Avoided Conversations Are Really Costing You at 6:13.",
-        "June Trust Matters edition ('What Got You Here Won't Get You There') had 544 impressions, 364 article views, and 16 engagements. LinkedIn newsletter subscribers now at 849.",
-        "18 new followers in June (net +12 after unfollows); total 4,282."
+        "LinkedIn impressions 1,685 in July (up 6% from June's 1,589), reaching 883 members. Engagements 58 (up 53% from June's 38). Engagement rate 3.44%, the highest of the year so far.",
+        "Website pageviews 363 (up 12% from June's 320), but site-wide avg time on page fell to 28s from 111s in June.",
+        "July Trust Matters edition ('The Way You Were Taught to Decide') had 579 impressions and 16 engagements on LinkedIn.",
+        "Top post of the month: 'When Formal DEIB Programs Are Scaled Back' (7/30) \u2014 952 impressions, 21 engagements.",
+        "19 new followers in July (net +10 after unfollows); total 4,292."
+      ]
+    },
+
+    /* ---------- AUGUST 2026 ---------- */
+    {
+      key: "2026-08",
+      label: "August 2026",
+      shortLabel: "Aug",
+
+      linkedin: {
+        impressions:    3470,    // Sum of Aug daily from Creator export
+        engagements:    112,     // Sum of Aug daily
+        followers:      4310,    // End of August (4,311 on Sep 1 minus 1 gained that day)
+        membersReached: 1524,    // From August Content Analytics screenshot (per-month now available)
+        newFollowers:   27,      // Gross new
+        engagementRate: 3.23,    // 112 / 3,470 \u00d7 100
+
+        daily: [
+          { date: "8/1",  impressions: 145, engagements: 1,  newFollowers: 0 },
+          { date: "8/2",  impressions: 95,  engagements: 0,  newFollowers: 0 },
+          { date: "8/3",  impressions: 112, engagements: 2,  newFollowers: 2 },
+          { date: "8/4",  impressions: 225, engagements: 5,  newFollowers: 2 },
+          { date: "8/5",  impressions: 234, engagements: 3,  newFollowers: 0 },
+          { date: "8/6",  impressions: 160, engagements: 7,  newFollowers: 2 },
+          { date: "8/7",  impressions: 40,  engagements: 8,  newFollowers: 1 },
+          { date: "8/8",  impressions: 28,  engagements: 0,  newFollowers: 1 },
+          { date: "8/9",  impressions: 37,  engagements: 2,  newFollowers: 0 },
+          { date: "8/10", impressions: 49,  engagements: 1,  newFollowers: 0 },
+          { date: "8/11", impressions: 89,  engagements: 2,  newFollowers: 0 },
+          { date: "8/12", impressions: 24,  engagements: 1,  newFollowers: 1 },
+          { date: "8/13", impressions: 177, engagements: 5,  newFollowers: 1 },
+          { date: "8/14", impressions: 44,  engagements: 3,  newFollowers: 0 },
+          { date: "8/15", impressions: 79,  engagements: 3,  newFollowers: 2 },
+          { date: "8/16", impressions: 40,  engagements: 0,  newFollowers: 0 },
+          { date: "8/17", impressions: 280, engagements: 9,  newFollowers: 2 },
+          { date: "8/18", impressions: 149, engagements: 2,  newFollowers: 2 },
+          { date: "8/19", impressions: 39,  engagements: 1,  newFollowers: 2 },
+          { date: "8/20", impressions: 331, engagements: 14, newFollowers: 2 },
+          { date: "8/21", impressions: 92,  engagements: 0,  newFollowers: 0 },
+          { date: "8/22", impressions: 32,  engagements: 3,  newFollowers: 0 },
+          { date: "8/23", impressions: 34,  engagements: 3,  newFollowers: 0 },
+          { date: "8/24", impressions: 148, engagements: 7,  newFollowers: 1 },
+          { date: "8/25", impressions: 38,  engagements: 1,  newFollowers: 0 },
+          { date: "8/26", impressions: 44,  engagements: 2,  newFollowers: 1 },
+          { date: "8/27", impressions: 189, engagements: 8,  newFollowers: 1 },
+          { date: "8/28", impressions: 140, engagements: 4,  newFollowers: 1 },
+          { date: "8/29", impressions: 87,  engagements: 0,  newFollowers: 0 },
+          { date: "8/30", impressions: 55,  engagements: 2,  newFollowers: 1 },
+          { date: "8/31", impressions: 234, engagements: 13, newFollowers: 2 }
+        ],
+
+        // Top 3 by engagement from the August Creator export.
+        topPosts: [
+          { title: "Raise Your Hand If You're Feeling AI Anxiety",   date: "8/31", engagements: 46, impressions: 171 },
+          { title: "The Best Leadership Development Advice Might\u2026", date: "8/20", engagements: 22, impressions: 427 }, // Trust Matters August edition
+          { title: "Leadership Pattern Reflections",                  date: "8/27", engagements: 17, impressions: 526 }
+        ]
+      },
+
+      // August Trust Matters edition. Numbers from single-post analytics export.
+      newsletter: {
+        editionTitle:  "The Best Leadership Development Advice",
+        articleViews:  329,
+        impressions:   429,
+        engagements:   14,       // Social engagements: 12 reactions + 1 comment + 1 repost
+        emailSends:    576,
+        emailOpenRate: 37
+      },
+
+      website: {
+        visits:         369,     // Estimated (2-month combined 788 \u00d7 pageview share 47%)
+        uniqueVisitors: 356,     // Estimated (759 \u00d7 47%)
+        pageViews:      320,     // From Squarespace, August view
+        bounceRate:     91.63,   // Site-wide average, August
+        avgTimeSeconds: 111,     // Site-wide average, August (driven by long dwell posts)
+
+        trafficSources: null,    // Per-month source breakdown not provided this cycle
+
+        topPages: [
+          { name: "Home",                                                     views: 124 },
+          { name: "Blog & Videos",                                            views: 96  },
+          { name: "About",                                                    views: 24  },
+          { name: "What Avoided Conversations Are Really Costing You",        views: 18  },
+          { name: "Leading Inclusively When Official Programs Have Been Erased", views: 17  }
+        ],
+
+        // Top pages by time on page in August.
+        timeOnPage: [
+          { page: "Leading Inclusively When Official Programs Have Been Erased", seconds: 1132 }, // 18:52 (17 views)
+          { page: "Why Self-Awareness Isn't Enough to Change How You Lead",     seconds: 723  }, // 12:03 (6 views)
+          { page: "What Avoided Conversations Are Really Costing You",         seconds: 280  }, // 4:40 (18 views)
+          { page: "The Manager Multiplier Effect",                              seconds: 186  }, // 3:06 (8 views)
+          { page: "About",                                                     seconds: 165  }  // 2:45 (24 views)
+        ]
+      },
+
+      // LinkedIn audience demographics from Creator export (covers Jul 1\u2013Sep 1 range).
+      audience: {
+        industry: [
+          { name: "Business Consulting and Services",   percentage: 17 },
+          { name: "Human Resources Services",           percentage: 8  },
+          { name: "Professional Training and Coaching", percentage: 5  },
+          { name: "Higher Education",                   percentage: 4  },
+          { name: "IT Services and IT Consulting",      percentage: 4  }
+        ],
+        seniority: [
+          { name: "Senior",   percentage: 31 },
+          { name: "Director", percentage: 15 },
+          { name: "CXO",      percentage: 11 },
+          { name: "VP",       percentage: 10 },
+          { name: "Entry",    percentage: 8  }
+        ],
+        companySize: [
+          { name: "10,001+ employees",         percentage: 17 },
+          { name: "2\u201310 employees",       percentage: 15 },
+          { name: "11\u201350 employees",      percentage: 12 },
+          { name: "1,001\u20135,000 employees", percentage: 11 },
+          { name: "51\u2013200 employees",     percentage: 11 }
+        ],
+        jobTitle: [
+          { name: "Founder",                 percentage: 6 },
+          { name: "Chief Executive Officer", percentage: 3 },
+          { name: "President",               percentage: 2 },
+          { name: "Co-Founder",              percentage: 2 },
+          { name: "Managing Director",       percentage: 2 }
+        ]
+      },
+
+      highlights: [
+        "LinkedIn impressions more than doubled to 3,470 (up 106% from July's 1,685), reaching 1,524 members (up 73% from July's 883). Engagements 112, nearly double July's 58. Engagement rate held at 3.23%.",
+        "The 8/31 post 'Raise Your Hand If You're Feeling AI Anxiety' hit 46 engagements on 171 impressions \u2014 a 27% engagement rate, the standout of the month.",
+        "August Trust Matters edition ('The Best Leadership Development Advice') had 429 impressions, 329 article views, and a 37% email open rate on 576 sends.",
+        "'Leading Inclusively When Official Programs Have Been Erased' held attention longest at 18:52 avg time; 'Why Self-Awareness Isn't Enough to Change How You Lead' at 12:03.",
+        "Website pageviews 320 in August (down 12% from July's 363), but site-wide avg time on page jumped to 111s from 28s.",
+        "27 new followers in August (net +18 after unfollows); total 4,310."
       ]
     }
   ]
@@ -2286,6 +2521,14 @@ function renderWebsiteOverview(months, isSingleMonth) {
 function renderTrafficSources(months) {
   const latest = months[months.length - 1];
   const ts = latest.website.trafficSources;
+
+  // If per-month traffic sources aren't available, hide the whole section.
+  if (!ts) {
+    const section = document.getElementById("traffic-sources-section");
+    if (section) section.style.display = "none";
+    return;
+  }
+
   const total = Object.values(ts).reduce((a, b) => a + (b || 0), 0);
 
   const sourceLabels = {
