@@ -1355,9 +1355,9 @@ footer .container {
 const METRICS_DATA = {
   meta: {
     title: "Metrics Report",
-    period: "March–August 2026",
+    period: "March–September 2026",
     subtitle: "LinkedIn, website, and audience performance",
-    lastUpdated: "September 2026"
+    lastUpdated: "October 2026"
   },
 
   months: [
@@ -1910,13 +1910,7 @@ const METRICS_DATA = {
 
       audience: null,  // Only latest month's audience is displayed; using aggregate for August
 
-      highlights: [
-        "LinkedIn impressions 1,685 in July (up 6% from June's 1,589), reaching 883 members. Engagements 58 (up 53% from June's 38). Engagement rate 3.44%, the highest of the year so far.",
-        "Website pageviews 363 (up 12% from June's 320), but site-wide avg time on page fell to 28s from 111s in June.",
-        "July Trust Matters edition ('The Way You Were Taught to Decide') had 579 impressions and 16 engagements on LinkedIn.",
-        "Top post of the month: 'When Formal DEIB Programs Are Scaled Back' (7/30) \u2014 952 impressions, 21 engagements.",
-        "19 new followers in July (net +10 after unfollows); total 4,292."
-      ]
+      highlights: []
     },
 
     /* ---------- AUGUST 2026 ---------- */
@@ -2044,13 +2038,150 @@ const METRICS_DATA = {
         ]
       },
 
+      highlights: []
+    },
+
+    /* ---------- SEPTEMBER 2026 ---------- */
+    {
+      key: "2026-09",
+      label: "September 2026",
+      shortLabel: "Sep",
+
+      linkedin: {
+        impressions:    1925,    // Sum of daily from Creator export (matches Discovery sheet)
+        engagements:    47,      // Sum of Sep daily
+        followers:      4323,    // Total on 9/30 (Followers sheet)
+        membersReached: 760,     // Discovery sheet
+        newFollowers:   20,      // Gross new (net +13 after 7 unfollows)
+        engagementRate: 2.44,    // 47 / 1,925 \u00d7 100
+
+        daily: [
+          { date: "9/1",  impressions: 267, engagements: 3, newFollowers: 3 },
+          { date: "9/2",  impressions: 110, engagements: 1, newFollowers: 0 },
+          { date: "9/3",  impressions: 35,  engagements: 1, newFollowers: 1 },
+          { date: "9/4",  impressions: 18,  engagements: 2, newFollowers: 0 },
+          { date: "9/5",  impressions: 9,   engagements: 0, newFollowers: 0 },
+          { date: "9/6",  impressions: 4,   engagements: 0, newFollowers: 0 },
+          { date: "9/7",  impressions: 30,  engagements: 2, newFollowers: 0 },
+          { date: "9/8",  impressions: 24,  engagements: 0, newFollowers: 0 },
+          { date: "9/9",  impressions: 10,  engagements: 0, newFollowers: 0 },
+          { date: "9/10", impressions: 197, engagements: 6, newFollowers: 1 },
+          { date: "9/11", impressions: 60,  engagements: 2, newFollowers: 1 },
+          { date: "9/12", impressions: 25,  engagements: 2, newFollowers: 0 },
+          { date: "9/13", impressions: 14,  engagements: 0, newFollowers: 1 },
+          { date: "9/14", impressions: 13,  engagements: 0, newFollowers: 0 },
+          { date: "9/15", impressions: 66,  engagements: 1, newFollowers: 0 },
+          { date: "9/16", impressions: 32,  engagements: 1, newFollowers: 1 },
+          { date: "9/17", impressions: 198, engagements: 6, newFollowers: 3 },
+          { date: "9/18", impressions: 82,  engagements: 4, newFollowers: 0 },
+          { date: "9/19", impressions: 18,  engagements: 0, newFollowers: 0 },
+          { date: "9/20", impressions: 18,  engagements: 0, newFollowers: 1 },
+          { date: "9/21", impressions: 36,  engagements: 2, newFollowers: 0 },
+          { date: "9/22", impressions: 272, engagements: 9, newFollowers: 1 },
+          { date: "9/23", impressions: 84,  engagements: 1, newFollowers: 1 },
+          { date: "9/24", impressions: 28,  engagements: 0, newFollowers: 1 },
+          { date: "9/25", impressions: 52,  engagements: 0, newFollowers: 1 },
+          { date: "9/26", impressions: 99,  engagements: 0, newFollowers: 0 },
+          { date: "9/27", impressions: 23,  engagements: 2, newFollowers: 1 },
+          { date: "9/28", impressions: 36,  engagements: 2, newFollowers: 2 },
+          { date: "9/29", impressions: 16,  engagements: 0, newFollowers: 0 },
+          { date: "9/30", impressions: 49,  engagements: 0, newFollowers: 1 }
+        ],
+
+        // Top 3 by engagement among posts published in September.
+        topPosts: [
+          { title: "The Most Useful Leadership Idea I Know Looks\u2026",   date: "9/22", engagements: 11, impressions: 467 },
+          { title: "In 1968, Researchers Told a Group of Teachers\u2026",  date: "9/10", engagements: 11, impressions: 313 },
+          { title: "What's an Experience That Shaped Who You\u2026",        date: "9/15", engagements: 7,  impressions: 168 }
+        ]
+      },
+
+      // September Trust Matters edition. Sent via LinkedIn's newsletter feature.
+      // Numbers from single-post analytics (10/5 screenshots, slightly higher than the
+      // earlier xlsx as LinkedIn's counts settled). Open rate not surfaced by LinkedIn here.
+      newsletter: {
+        editionTitle:  "Building the Conditions for an Adaptable Team",
+        articleViews:  281,
+        impressions:   307,
+        engagements:   7,
+        emailSends:    576,
+        emailOpenRate: null
+      },
+
+      website: {
+        visits:         333,     // Squarespace Traffic (Sep)
+        uniqueVisitors: 319,     // Squarespace Traffic (Sep)
+        pageViews:      319,     // Squarespace Engagement (Sep)
+        bounceRate:     91.6,    // Site-wide average
+        avgTimeSeconds: 88,      // Site-wide average, Sep
+
+        // Top sources from Squarespace Traffic view. Google + DuckDuckGo + Bing bucketed as search;
+        // the "Others" category rolled into referral (no finer per-category breakdown provided).
+        trafficSources: {
+          direct:   291,
+          search:   31,
+          social:   0,
+          email:    0,
+          referral: 11
+        },
+
+        topPages: [
+          { name: "Home",       views: 135 },
+          { name: "Coaching",   views: 19  },
+          { name: "Books",      views: 17  },
+          { name: "About",      views: 14  },
+          { name: "Consulting", views: 14  }
+        ],
+
+        // Top pages by time on page in September.
+        timeOnPage: [
+          { page: "What Avoided Conversations Are Really Costing You",     seconds: 563 }, // 9:23 (9 views)
+          { page: "Trust Is Built in Small Moments, Not Big Announcements", seconds: 417 }, // 6:57 (6 views)
+          { page: "The Great Workplace",                                   seconds: 317 }, // 5:17 (3 views)
+          { page: "Why Self-Awareness Isn't Enough to Change How You Lead", seconds: 261 }, // 4:21 (8 views)
+          { page: "Coaching",                                              seconds: 238 }  // 3:58 (19 views)
+        ]
+      },
+
+      // LinkedIn audience demographics from Creator export (Sep 1\u201330 range).
+      audience: {
+        industry: [
+          { name: "Business Consulting and Services",   percentage: 17 },
+          { name: "Human Resources Services",           percentage: 8  },
+          { name: "Professional Training and Coaching", percentage: 5  },
+          { name: "Higher Education",                   percentage: 4  },
+          { name: "IT Services and IT Consulting",      percentage: 4  }
+        ],
+        seniority: [
+          { name: "Senior",   percentage: 32 },
+          { name: "Director", percentage: 15 },
+          { name: "CXO",      percentage: 12 },
+          { name: "VP",       percentage: 10 },
+          { name: "Entry",    percentage: 8  }
+        ],
+        companySize: [
+          { name: "10,001+ employees",         percentage: 17 },
+          { name: "2\u201310 employees",       percentage: 15 },
+          { name: "11\u201350 employees",      percentage: 12 },
+          { name: "51\u2013200 employees",     percentage: 11 },
+          { name: "1,001\u20135,000 employees", percentage: 10 }
+        ],
+        jobTitle: [
+          { name: "Founder",                 percentage: 6 },
+          { name: "Chief Executive Officer", percentage: 3 },
+          { name: "President",               percentage: 2 },
+          { name: "Co-Founder",              percentage: 2 },
+          { name: "Managing Director",       percentage: 2 }
+        ]
+      },
+
       highlights: [
-        "LinkedIn impressions more than doubled to 3,470 (up 106% from July's 1,685), reaching 1,524 members (up 73% from July's 883). Engagements 112, nearly double July's 58. Engagement rate held at 3.23%.",
-        "The 8/31 post 'Raise Your Hand If You're Feeling AI Anxiety' hit 46 engagements on 171 impressions \u2014 a 27% engagement rate, the standout of the month.",
-        "August Trust Matters edition ('The Best Leadership Development Advice') had 429 impressions, 329 article views, and a 37% email open rate on 576 sends.",
-        "'Leading Inclusively When Official Programs Have Been Erased' held attention longest at 18:52 avg time; 'Why Self-Awareness Isn't Enough to Change How You Lead' at 12:03.",
-        "Website pageviews 320 in August (down 12% from July's 363), but site-wide avg time on page jumped to 111s from 28s.",
-        "27 new followers in August (net +18 after unfollows); total 4,310."
+        "LinkedIn impressions 1,925 (down 45% from August's 3,470), reaching 760 members (down 50% from 1,524). Engagements 47 (down 58% from 112). Engagement rate 2.44%, down from 3.23%.",
+        "Website pageviews essentially flat at 319 (vs. 320 in August). Visits 333 (down 10% from 369), site-wide avg time 1:28 (down from 1:51).",
+        "September Trust Matters edition ('Building the Conditions for an Adaptable Team') had 307 impressions, 281 article views, and 7 engagements on 576 email sends via LinkedIn.",
+        "Top posts tied at 11 engagements: 9/22 'The Most Useful Leadership Idea I Know Looks\u2026' (467 impressions) and 9/10 'In 1968, Researchers Told a Group of Teachers\u2026' (313 impressions).",
+        "'What Avoided Conversations Are Really Costing You' held attention longest at 9:23 avg time; 'Trust Is Built in Small Moments' at 6:57; 'The Great Workplace' at 5:17.",
+        "20 new followers in September (net +13 after unfollows); total 4,323."
       ]
     }
   ]
