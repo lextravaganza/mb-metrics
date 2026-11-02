@@ -669,7 +669,7 @@ section:last-of-type { border-bottom: none; }
   display: flex;
   gap: 4px;
   margin-bottom: 16px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .time-tab {
@@ -1355,9 +1355,9 @@ footer .container {
 const METRICS_DATA = {
   meta: {
     title: "Metrics Report",
-    period: "March–September 2026",
+    period: "March–October 2026",
     subtitle: "LinkedIn, website, and audience performance",
-    lastUpdated: "October 2026"
+    lastUpdated: "November 2026"
   },
 
   months: [
@@ -2175,13 +2175,150 @@ const METRICS_DATA = {
         ]
       },
 
+      highlights: []
+    },
+
+    /* ---------- OCTOBER 2026 ---------- */
+    {
+      key: "2026-10",
+      label: "October 2026",
+      shortLabel: "Oct",
+
+      linkedin: {
+        impressions:    2733,    // Discovery sheet (10/1\u201310/31)
+        engagements:    60,      // Sum of daily
+        followers:      4339,    // Total on 10/31 (Followers sheet)
+        membersReached: 1284,    // Discovery sheet
+        newFollowers:   26,      // Gross (net +16 after 10 unfollows)
+        engagementRate: 2.20,    // 60 / 2,733 \u00d7 100
+
+        daily: [
+          { date: "10/1",  impressions: 40,  engagements: 2, newFollowers: 0 },
+          { date: "10/2",  impressions: 22,  engagements: 0, newFollowers: 0 },
+          { date: "10/3",  impressions: 23,  engagements: 0, newFollowers: 2 },
+          { date: "10/4",  impressions: 17,  engagements: 3, newFollowers: 0 },
+          { date: "10/5",  impressions: 67,  engagements: 0, newFollowers: 0 },
+          { date: "10/6",  impressions: 13,  engagements: 0, newFollowers: 0 },
+          { date: "10/7",  impressions: 12,  engagements: 0, newFollowers: 2 },
+          { date: "10/8",  impressions: 2,   engagements: 0, newFollowers: 0 },
+          { date: "10/9",  impressions: 8,   engagements: 0, newFollowers: 0 },
+          { date: "10/10", impressions: 7,   engagements: 0, newFollowers: 2 },
+          { date: "10/11", impressions: 4,   engagements: 0, newFollowers: 0 },
+          { date: "10/12", impressions: 43,  engagements: 0, newFollowers: 0 },
+          { date: "10/13", impressions: 2,   engagements: 0, newFollowers: 1 },
+          { date: "10/14", impressions: 11,  engagements: 0, newFollowers: 0 },
+          { date: "10/15", impressions: 121, engagements: 3, newFollowers: 3 },
+          { date: "10/16", impressions: 64,  engagements: 1, newFollowers: 2 },
+          { date: "10/17", impressions: 57,  engagements: 1, newFollowers: 0 },
+          { date: "10/18", impressions: 103, engagements: 1, newFollowers: 0 },
+          { date: "10/19", impressions: 147, engagements: 1, newFollowers: 0 },
+          { date: "10/20", impressions: 224, engagements: 4, newFollowers: 1 },
+          { date: "10/21", impressions: 132, engagements: 2, newFollowers: 1 },
+          { date: "10/22", impressions: 276, engagements: 6, newFollowers: 1 },
+          { date: "10/23", impressions: 85,  engagements: 4, newFollowers: 3 },
+          { date: "10/24", impressions: 46,  engagements: 3, newFollowers: 1 },
+          { date: "10/25", impressions: 32,  engagements: 2, newFollowers: 0 },
+          { date: "10/26", impressions: 59,  engagements: 5, newFollowers: 4 },
+          { date: "10/27", impressions: 319, engagements: 0, newFollowers: 0 },
+          { date: "10/28", impressions: 322, engagements: 7, newFollowers: 1 },
+          { date: "10/29", impressions: 215, engagements: 9, newFollowers: 1 },
+          { date: "10/30", impressions: 161, engagements: 5, newFollowers: 0 },
+          { date: "10/31", impressions: 99,  engagements: 1, newFollowers: 1 }
+        ],
+
+        // Top 3 by engagement among posts published in October.
+        topPosts: [
+          { title: "It's Q4, Arguably the Busiest Time of Year\u2026",  date: "10/22", engagements: 20, impressions: 432 }, // Trust Matters October edition
+          { title: "Whatever Your Thoughts Are on the iPhone\u2026",    date: "10/28", engagements: 12, impressions: 497 },
+          { title: "77% of Employees Say They Intend to Stay\u2026",    date: "10/15", engagements: 10, impressions: 656 }
+        ]
+      },
+
+      // October Trust Matters edition. Published on LinkedIn 10/22.
+      // Numbers from the single-post Discovery/Article performance view (10/22 post, as of 11/2).
+      newsletter: {
+        editionTitle:  "After the Employee Survey",
+        articleViews:  291,
+        impressions:   434,
+        engagements:   19,       // Social engagements: 12 reactions + 5 comments + 1 repost + 1 save
+        emailSends:    578,
+        emailOpenRate: 33
+      },
+
+      website: {
+        visits:         440,     // Squarespace Traffic (Oct)
+        uniqueVisitors: 431,     // Squarespace Traffic (Oct)
+        pageViews:      501,     // Squarespace Engagement (Oct)
+        bounceRate:     89.71,
+        avgTimeSeconds: 62,      // Site-wide average (Squarespace "Your Page Averages")
+
+        // Top sources from Squarespace Traffic view (Oct). Google + Bing bucketed as search;
+        // LinkedIn tracked separately as social.
+        trafficSources: {
+          direct:   384,
+          search:   42,    // Google 35 + Bing 7
+          social:   4,     // LinkedIn
+          email:    0,
+          referral: 10     // "Others" bucket
+        },
+
+        topPages: [
+          { name: "Home",          views: 129 },
+          { name: "Blog & Videos", views: 101 },
+          { name: "Coaching",      views: 28  },
+          { name: "About",         views: 25  },
+          { name: "Books",         views: 24  }
+        ],
+
+        // Top pages by time on page in October.
+        timeOnPage: [
+          { page: "Overconfidence and Underconfidence Both Create Blind Spots", seconds: 454 }, // 7:34 (6 views)
+          { page: "The Retention Illusion",                                     seconds: 214 }, // 3:34 (6 views)
+          { page: "What Avoided Conversations Are Really Costing You",          seconds: 187 }, // 3:07 (12 views)
+          { page: "In Defense of the Middle Manager",                           seconds: 142 }, // 2:22 (14 views)
+          { page: "Home",                                                       seconds: 134 }  // 2:14 (129 views)
+        ]
+      },
+
+      // LinkedIn audience demographics from Creator export (Oct 1\u201331).
+      audience: {
+        industry: [
+          { name: "Business Consulting and Services",   percentage: 17 },
+          { name: "Human Resources Services",           percentage: 8  },
+          { name: "Professional Training and Coaching", percentage: 5  },
+          { name: "Higher Education",                   percentage: 4  },
+          { name: "IT Services and IT Consulting",      percentage: 4  }
+        ],
+        seniority: [
+          { name: "Senior",   percentage: 32 },
+          { name: "Director", percentage: 15 },
+          { name: "CXO",      percentage: 12 },
+          { name: "VP",       percentage: 10 },
+          { name: "Entry",    percentage: 8  }
+        ],
+        companySize: [
+          { name: "10,001+ employees",         percentage: 17 },
+          { name: "2\u201310 employees",       percentage: 15 },
+          { name: "11\u201350 employees",      percentage: 12 },
+          { name: "51\u2013200 employees",     percentage: 11 },
+          { name: "1,001\u20135,000 employees", percentage: 11 }
+        ],
+        jobTitle: [
+          { name: "Founder",                 percentage: 6 },
+          { name: "Chief Executive Officer", percentage: 3 },
+          { name: "Co-Founder",              percentage: 2 },
+          { name: "President",               percentage: 2 },
+          { name: "Managing Director",       percentage: 2 }
+        ]
+      },
+
       highlights: [
-        "LinkedIn impressions 1,925 (down 45% from August's 3,470), reaching 760 members (down 50% from 1,524). Engagements 47 (down 58% from 112). Engagement rate 2.44%, down from 3.23%.",
-        "Website pageviews essentially flat at 319 (vs. 320 in August). Visits 333 (down 10% from 369), site-wide avg time 1:28 (down from 1:51).",
-        "September Trust Matters edition ('Building the Conditions for an Adaptable Team') had 307 impressions, 281 article views, and 7 engagements on 576 email sends via LinkedIn.",
-        "Top posts tied at 11 engagements: 9/22 'The Most Useful Leadership Idea I Know Looks\u2026' (467 impressions) and 9/10 'In 1968, Researchers Told a Group of Teachers\u2026' (313 impressions).",
-        "'What Avoided Conversations Are Really Costing You' held attention longest at 9:23 avg time; 'Trust Is Built in Small Moments' at 6:57; 'The Great Workplace' at 5:17.",
-        "20 new followers in September (net +13 after unfollows); total 4,323."
+        "LinkedIn impressions 2,733 (up 42% from September's 1,925), reaching 1,284 members (up 69% from 760). Engagements 60 (up 28% from 47). Engagement rate 2.20%, slightly down from 2.44%.",
+        "Website visits 440 (up 32% from September's 333), unique visitors 431 (up 35%), pageviews 501 (up 57% from 319). Bounce rate improved to 89.71%; site-wide avg time 1:02.",
+        "October Trust Matters edition ('After the Employee Survey') had 434 impressions, 291 article views, 19 engagements, and a 33% open rate on 578 email sends via LinkedIn.",
+        "Top post of the month: 10/22 'It's Q4, Arguably the Busiest Time of Year\u2026' \u2014 20 engagements, the newsletter article. The 10/15 '77% of Employees Say They Intend to Stay\u2026' post drew the most impressions at 656.",
+        "'Overconfidence and Underconfidence Both Create Blind Spots' held attention longest at 7:34 avg time; 'The Retention Illusion' at 3:34; 'What Avoided Conversations Are Really Costing You' at 3:07.",
+        "26 new followers in October (net +16 after unfollows); total 4,339."
       ]
     }
   ]
@@ -2893,7 +3030,7 @@ function renderTimeOnPage(months) {
   }
 
   tabsEl.innerHTML = months.map((m, i) =>
-    `<button class="time-tab" data-i="${i}">${m.label}</button>`
+    `<button class="time-tab" data-i="${i}">${m.shortLabel}</button>`
   ).join("");
 
   // Hide tabs when there's only one month (no need to switch)
